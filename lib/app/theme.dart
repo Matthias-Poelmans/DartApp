@@ -1,38 +1,57 @@
 import 'package:flutter/material.dart';
 
-/// App-wide theme. Dark, dartboard-inspired palette (green + red accents on a
-/// near-black background).
+import 'colors.dart';
+
+/// App-wide theme. A clean, modern light palette built entirely from
+/// [AppColors]: deep blue primary, yellow accent, soft-white background.
 class AppTheme {
   AppTheme._();
 
-  // Dartboard colours.
-  static const Color dartGreen = Color(0xFF1B7A3D);
-  static const Color dartRed = Color(0xFFC0392B);
-  static const Color cream = Color(0xFFF5E9C9);
-
-  static ThemeData get dark {
+  static ThemeData get light {
     final colorScheme = ColorScheme.fromSeed(
-      seedColor: dartGreen,
-      brightness: Brightness.dark,
+      seedColor: AppColors.blue,
+      brightness: Brightness.light,
     ).copyWith(
-      secondary: dartRed,
-      surface: const Color(0xFF14161A),
+      primary: AppColors.blue,
+      onPrimary: AppColors.softWhite,
+      secondary: AppColors.yellow,
+      onSecondary: AppColors.ink,
+      surface: AppColors.surface,
+      onSurface: AppColors.ink,
+      onSurfaceVariant: AppColors.inkMuted,
     );
 
-    return ThemeData(
+    final base = ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: const Color(0xFF0E0F12),
+      scaffoldBackgroundColor: AppColors.softWhite,
+    );
+
+    return base.copyWith(
       appBarTheme: const AppBarTheme(
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.blue,
+        foregroundColor: AppColors.softWhite,
         elevation: 0,
+        titleTextStyle: TextStyle(
+          color: AppColors.softWhite,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
       ),
       cardTheme: CardThemeData(
         clipBehavior: Clip.antiAlias,
+        color: AppColors.surface,
+        elevation: 2,
+        shadowColor: AppColors.blue.withValues(alpha: 0.15),
+        surfaceTintColor: Colors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(20),
         ),
+      ),
+      textTheme: base.textTheme.apply(
+        bodyColor: AppColors.ink,
+        displayColor: AppColors.ink,
       ),
     );
   }

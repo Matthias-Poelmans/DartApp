@@ -47,6 +47,19 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
 
+  # Generates the Android launcher icons from the app logo (build-time tool).
+  flutter_launcher_icons: ^0.14.1
+
+# Launcher icon generation. Run after changes:  dart run flutter_launcher_icons
+# Source is the bundled Dartillect logo; adaptive icon uses the brand blue.
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/images/dartillect_logo.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#1B4965"
+  adaptive_icon_foreground: "assets/images/dartillect_logo.png"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -57,6 +70,17 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  # App images (logo shown on the startup splash screen). Bundled for offline use.
+  assets:
+    - assets/images/dartillect_logo.png
+
+  # Bungee — the display font used for the app name and game titles.
+  # Bundled locally (not fetched at runtime) so the app stays fully offline.
+  fonts:
+    - family: Bungee
+      fonts:
+        - asset: assets/fonts/Bungee-Regular.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:

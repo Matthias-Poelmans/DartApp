@@ -32,8 +32,9 @@ That's it — the home screen menu and the router are both generated from `game_
 so the new game appears automatically. See `lib/games/game.dart` for the model and
 `docs/architecture.md` for the full pattern.
 
-> The registry is intentionally **empty** right now. The home screen shows an empty-state and
-> is ready for games to be added.
+> The registry currently holds three **placeholder** games (Killer, Halve It, Tag Team) that
+> open a shared "coming soon" screen — their scoring isn't built yet. The home screen still
+> handles an empty registry gracefully via its empty-state.
 
 ## Project layout
 
@@ -41,12 +42,17 @@ so the new game appears automatically. See `lib/games/game.dart` for the model a
 lib/
   main.dart                 # entry: theme + router
   app/router.dart           # go_router (home + per-game routes from the registry)
-  app/theme.dart            # dark, dartboard-inspired theme
+  app/theme.dart            # light theme built from AppColors (see docs/design-system.md)
+  app/colors.dart           # central colour palette (single source of truth)
+  app/fonts.dart            # central font families (Bungee display font)
   games/game.dart           # GameDefinition model (the extension point)
   games/game_registry.dart  # <-- ADD GAMES HERE
+  home/splash_screen.dart   # startup splash (logo on white) -> /home
   home/home_screen.dart     # menu rendered from the registry
   home/widgets/game_card.dart
-docs/                       # architecture, build/release, ADRs (the "why")
+docs/                       # architecture, design-system, build/release, ADRs (the "why")
+assets/fonts/               # bundled fonts (Bungee) — kept local for offline use
+assets/images/              # bundled images (app logo) — kept local for offline use
 claude/sessions/            # one md per prompt/session (the "what happened")
 ```
 

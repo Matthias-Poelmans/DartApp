@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../app/colors.dart';
+import '../app/fonts.dart';
 import '../games/game_registry.dart';
 import 'widgets/game_card.dart';
 
@@ -13,23 +15,53 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Darts Games'),
+        title: const Text(
+          'Dartillect',
+          style: TextStyle(
+            fontFamily: AppFonts.display,
+            fontSize: 22,
+            letterSpacing: 1,
+            color: AppColors.softWhite,
+          ),
+        ),
       ),
       body: SafeArea(
         child: gameRegistry.isEmpty
             ? const _EmptyState()
             : ListView.separated(
-                padding: const EdgeInsets.all(16),
-                itemCount: gameRegistry.length,
-                separatorBuilder: (_, _) => const SizedBox(height: 12),
+                padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
+                itemCount: gameRegistry.length + 1,
+                separatorBuilder: (_, _) => const SizedBox(height: 14),
                 itemBuilder: (context, index) {
-                  final game = gameRegistry[index];
+                  if (index == 0) return const _Header();
+                  final game = gameRegistry[index - 1];
                   return GameCard(
                     game: game,
-                    onTap: () => context.go(game.route),
+                    onTap: () => context.push(game.route),
                   );
                 },
               ),
+      ),
+    );
+  }
+}
+
+/// A short blue heading shown above the list of games.
+class _Header extends StatelessWidget {
+  const _Header();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Text(
+        'Choose a game',
+        style: theme.textTheme.headlineSmall?.copyWith(
+          fontFamily: AppFonts.display,
+          letterSpacing: 0.5,
+          color: AppColors.blue,
+        ),
       ),
     );
   }

@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'game.dart';
+import 'placeholder/placeholder_game_screen.dart';
 
 /// The list of all darts games available in the app.
 ///
@@ -9,16 +12,34 @@ import 'game.dart';
 /// The home screen and router are both driven by this list, so that's all that's
 /// needed — the game then appears on the menu automatically.
 ///
-/// Games are added one at a time as they are specified. The list is intentionally
-/// empty for now; the home screen handles the empty state gracefully.
-const List<GameDefinition> gameRegistry = <GameDefinition>[
-  // Example (kept as a reference, commented out):
-  //
-  // GameDefinition(
-  //   id: 'x01',
-  //   title: 'X01 (501 / 301)',
-  //   description: 'Count down to exactly zero.',
-  //   icon: Icons.exposure_minus_1,
-  //   builder: (context) => const X01Screen(),
-  // ),
+/// The entries below are placeholders: they show on the menu and open a themed
+/// "coming soon" screen, but their scoring isn't implemented yet.
+final List<GameDefinition> gameRegistry = <GameDefinition>[
+  GameDefinition(
+    id: 'killer',
+    title: 'Killer',
+    description: 'Claim a number, become a killer, knock others out.',
+    icon: Icons.sports_martial_arts,
+    minPlayers: 2,
+    maxPlayers: 8,
+    builder: (context) => const PlaceholderGameScreen(title: 'Killer'),
+  ),
+  GameDefinition(
+    id: 'halve_it',
+    title: 'Halve It',
+    description: 'Hit the target each round or halve your score.',
+    icon: Icons.cut,
+    minPlayers: 1,
+    maxPlayers: 8,
+    builder: (context) => const PlaceholderGameScreen(title: 'Halve It'),
+  ),
+  GameDefinition(
+    id: 'tag_team',
+    title: 'Tag Team',
+    description: 'Play in teams, tag your partner between throws.',
+    icon: Icons.groups,
+    minPlayers: 2,
+    maxPlayers: 8,
+    builder: (context) => const PlaceholderGameScreen(title: 'Tag Team'),
+  ),
 ];

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../app/colors.dart';
+import '../../app/fonts.dart';
 import '../../games/game.dart';
 
 /// A single tappable card representing a darts game on the home screen.
@@ -25,8 +27,8 @@ class GameCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 26,
-                  backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.18),
-                  child: Icon(game.icon, color: theme.colorScheme.primary, size: 28),
+                  backgroundColor: AppColors.yellow,
+                  child: Icon(game.icon, color: AppColors.blue, size: 28),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -38,8 +40,12 @@ class GameCard extends StatelessWidget {
                           Expanded(
                             child: Text(
                               game.title,
-                              style: theme.textTheme.titleMedium
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                fontFamily: AppFonts.display,
+                                fontSize: 15,
+                                letterSpacing: 0.5,
+                                color: AppColors.blue,
+                              ),
                             ),
                           ),
                           if (!enabled)
@@ -90,13 +96,15 @@ class _Badge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
-        color: theme.colorScheme.secondary.withValues(alpha: 0.2),
+        color: AppColors.yellow,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
         text,
-        style: theme.textTheme.labelSmall
-            ?.copyWith(color: theme.colorScheme.secondary),
+        style: theme.textTheme.labelSmall?.copyWith(
+          color: AppColors.ink,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
