@@ -40,6 +40,10 @@ dependencies:
   # games so it auto-fills at each game's setup screen.
   shared_preferences: ^2.3.2
 
+  # Keeps the screen awake while the app is open (scoring a game shouldn't let
+  # the phone lock). Local device API, no network.
+  wakelock_plus: ^1.2.8
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

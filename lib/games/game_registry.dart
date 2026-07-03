@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'game.dart';
+import 'killer/killer_game_screen.dart';
 import 'placeholder/placeholder_game_screen.dart';
 
 /// The list of all darts games available in the app.
@@ -22,7 +23,7 @@ final List<GameDefinition> gameRegistry = <GameDefinition>[
     icon: Icons.sports_martial_arts,
     minPlayers: 3,
     maxPlayers: 8,
-    builder: (context) => const PlaceholderGameScreen(title: 'Killer'),
+    builder: (context) => const KillerGameScreen(),
   ),
   GameDefinition(
     id: 'halve_it',

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'app/router.dart';
 import 'app/theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Keep the screen on while the app is open — scoring a darts game shouldn't
+  // let the phone lock or dim.
+  WakelockPlus.enable();
   runApp(const DartsGamesApp());
 }
 

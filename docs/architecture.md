@@ -75,5 +75,7 @@ on the menu automatically. **No central file needs structural changes** beyond t
 ## Constraints
 
 - **No network.** Nothing in the app should make HTTP calls or require connectivity.
+- **Screen stays awake.** `main()` enables `WakelockPlus` so the phone won't lock/dim while the
+  app is open (you're scoring across the room). Local device API — still offline.
 - **Offline persistence** (match history, players) will use a local store (`shared_preferences`
   or `hive`) and is added only when a game needs it.

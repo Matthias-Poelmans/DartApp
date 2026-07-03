@@ -47,6 +47,9 @@ lib/
   app/fonts.dart            # central font families (Bungee display font)
   games/game.dart           # GameDefinition model (the extension point)
   games/game_registry.dart  # <-- ADD GAMES HERE
+  games/dartboard.dart      # shared board layout (number order, neighbours)
+  games/killer/             # Killer game (see docs/killer-implementation.md)
+  games/players/            # shared player-setup + intro flow
   home/splash_screen.dart   # startup splash (logo on white) -> /home
   home/home_screen.dart     # menu rendered from the registry
   home/widgets/game_card.dart
